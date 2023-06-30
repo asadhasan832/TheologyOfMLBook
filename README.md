@@ -3,7 +3,7 @@
 
 * [Book Outline](https://docs.google.com/document/d/1ZApaPQAbKkqyfl8uKLJCr8QT72QQnsnDwx1DAqf6Yzw)
 * [Book Source Document](https://docs.google.com/document/d/1KzkR78pXx59w8F50gJXtNxh4NtCUZo4IkyJAC8O7sXw)
-* [Book Rendering Apps Script](DocToLatex.gs)
+* [Book Rendering Apps Script](DocToLatex.gs) *(Uses Code Blocks Extension and Apps Script)*
 * [Book Rendered LaTeX](TheologyOfML.tex)
 * [Book Rendering](Theology_of_ML.pdf)
 * [ChatGPT Session](https://chat.openai.com/share/2435693b-f389-4f0e-b70e-2b5d15cdcc71) *(Not Covered Under MIT
