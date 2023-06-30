@@ -9,22 +9,34 @@ const titlePatterns = [
   "Chapter\\s\\d.+"
 ]
 
+const noIndentChapterPatterns = [
+  "Preface",
+  "Chapter 10.+"
+]
+
 function indentParagraph(paragraphText) {
     return paragraphText.trim().replace(/^/g, "\n\\indent ").replace(/\n/g, "\n\n\\indent ")
 }
 
-function renderDoc() {
+function main() {
   const {chapterTitle, chapterTitleTest} = chapterRegex()
+  let noIndentRegex = chapterIndentRegex()
   let doc = DocumentApp.getActiveDocument()
   let text = doc.getBody().getText()
   let title = doc.getName()
   let chapterTexts = text.split(chapterTitle)
   let template = initializeTemplate(title)
+  let previousNoIndent = false
   let i = 0
   for(let chapterText of chapterTexts) {
     if(chapterText) {
       if(chapterTitleTest.test(chapterText)) {
+        previousNoIndent = false
+        if(noIndentRegex.test(chapterText)) previousNoIndent = true
         template += `\\chapter*{${chapterText.trim()}}
+`
+      } else if(previousNoIndent) {
+        template += `${chapterText}
 `
       } else {
         template += `${indentParagraph(chapterText)}
@@ -79,5 +91,15 @@ function chapterRegex() {
   const chapterTitle = new RegExp(chapterTitleLiteral, "g")
   const chapterTitleTest = new RegExp(chapterTitleTestLiteral, "g")
   return {chapterTitle, chapterTitleTest}
+}
+
+function chapterIndentRegex() {
+  let chapterTitleLiteral = ""
+  for(let p of noIndentChapterPatterns) {
+    chapterTitleLiteral += `(${p})|`
+  }
+  chapterTitleLiteral = chapterTitleLiteral.replace(/\|$/, '')
+  const chapterTitle = new RegExp(chapterTitleLiteral, "g")
+  return chapterTitle
 }
 
