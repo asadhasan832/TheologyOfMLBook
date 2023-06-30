@@ -19,3 +19,7 @@ used to compile a more sophisticated compiler for the language written in the ne
 This book holds principals of knowledge transfer, which could be used as a governing artifact for creating both 
 software and machine learning artifacts, as a manuscript and a source of truth for aiding further research in machine 
 learning.
+
+## Call for Editorial
+
+Please feel to open PR and provide editorial.
