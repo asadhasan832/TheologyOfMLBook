@@ -1,6 +1,6 @@
 const TITLE = 1
 const BODY = 0
-const AUTHOR = "Asad Hasan"
+const AUTHOR = "Asad Hasan (Alex)"
 const AUTHOR_TITLE = "Theoretical Computational Scientist"
 // Edit these title patterns
 const titlePatterns = [
@@ -41,6 +41,7 @@ function initializeTemplate(title) {
 \\usepackage[english]{babel}
 \\usepackage{url}
 \\usepackage{titlesec}
+\\usepackage{lettrine}
 
 % for placeholder text
 \\usepackage{lipsum}
