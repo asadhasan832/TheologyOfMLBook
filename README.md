@@ -6,8 +6,8 @@
 * [Book Rendering Script](DocToLatex.gs)
 * [Book Rendered LaTeX](TheologyOfML.tex)
 * [Book Rendering](Theology_of_ML.pdf)
-* [ChatGPT Session](https://chat.openai.com/share/2435693b-f389-4f0e-b70e-2b5d15cdcc71) (Not covered under MIT
-Lisence)
+* [ChatGPT Session](https://chat.openai.com/share/2435693b-f389-4f0e-b70e-2b5d15cdcc71) *(Not Covered Under MIT
+Lisence)*
 
 ## Purpose
 
