@@ -9,6 +9,10 @@ const titlePatterns = [
   "Chapter\\s\\d.+"
 ]
 
+function indentParagraph(paragraphText) {
+    return paragraphText.trim().replace(/^/g, "\n\\indent ").replace(/\n/g, "\n\n\\indent ")
+}
+
 function renderDoc() {
   const {chapterTitle, chapterTitleTest} = chapterRegex()
   let doc = DocumentApp.getActiveDocument()
@@ -23,7 +27,7 @@ function renderDoc() {
         template += `\\chapter*{${chapterText.trim()}}
 `
       } else {
-        template += `${chapterText.trim()}
+        template += `${indentParagraph(chapterText)}
 `
       }
     }
