@@ -1,13 +1,11 @@
 # Theology of ML
 ## by Asad Hasan (Alex) 
 
-* [Book Outline](https://docs.google.com/document/d/1ZApaPQAbKkqyfl8uKLJCr8QT72QQnsnDwx1DAqf6Yzw) *(Not covered under MIT
-Lisence, as the book outline is copyrighted by the author.)*
-* [Book Source Document](https://docs.google.com/document/d/1KzkR78pXx59w8F50gJXtNxh4NtCUZo4IkyJAC8O7sXw) *(Not covered under MIT
-Lisence, as the book source document is copyrighted by the author.)*
-* [Book Rendering Apps Script](DocToLatex.gs) *(Uses Code Blocks Extension and Apps Script.)*
-* [Book Rendered LaTeX](TheologyOfML.tex)
-* [Book Rendering](Theology_of_ML.pdf)
+* [Book Outline](https://docs.google.com/document/d/1ZApaPQAbKkqyfl8uKLJCr8QT72QQnsnDwx1DAqf6Yzw) *(Not covered under MIT Lisence, as the book outline is copyrighted by the author.)*
+* [Book Source Document](https://docs.google.com/document/d/1KzkR78pXx59w8F50gJXtNxh4NtCUZo4IkyJAC8O7sXw) *(Not covered under MIT Lisence, as the book source document is copyrighted by the author.)*
+* [Book Rendering Apps Script](DocToLatex.gs) *(Uses Code Blocks Extension and Apps Script, covered under MIT Lisence.)*
+* [Book Rendered LaTeX](TheologyOfML.tex) *(Not covered under MIT Lisence, as the book source document is copyrighted by the author.)*
+* [Book Rendering](Theology_of_ML.pdf) *(Not covered under MIT Lisence, as the book source document is copyrighted by the author.)*
 * [ChatGPT Session](https://chat.openai.com/share/2435693b-f389-4f0e-b70e-2b5d15cdcc71) *(Not covered under MIT Lisence, as the "Literary Script" is copyrighted.)*
 
 ## Purpose
