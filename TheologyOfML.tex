@@ -18,6 +18,7 @@
   {\normalfont\huge\bfseries}{}{0pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{-50pt}{40pt}
 
+\newtheorem*{proposition}{Proposition} % Define theorem environment without numbering
 \newtheorem*{thoughtexperiment}{Thought Experiment} % Define theorem environment without numbering
 
 \begin{document}
@@ -114,6 +115,8 @@
 \indent The debate between branch coverage and line coverage of testing, is a popular one. Line coverage in testing does not provide use-case level guarantees, whereas exhaustive branch coverage is cost prohibitive in many cases. Contextualized branch coverage is a concept which uses use-case driven blackbox testing to find a middle ground.
 
 \indent The larger the difference, or precise its real number component, between the source shape and its destination shape, the more difficult a problem may be.
+
+\indent \begin{proposition}A system is sampled at greater than twice the frequency of change $\therefore$ for there to be a true audit as per Nyquist's theorem, each audit-able event is to be emitted at least twice.\end{proposition}
 \chapter*{Chapter 6: Theology of Temporal Linearizability}
 
 
