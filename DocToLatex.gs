@@ -11,7 +11,7 @@ const titlePatterns = [
 
 const noIndentChapterPatterns = [
   "Preface",
-  "Chapter 10.+"
+  "Chapter 11.+"
 ]
 
 function indentParagraph(paragraphText) {
@@ -58,6 +58,8 @@ function initializeTemplate(title) {
 \\usepackage{url}
 \\usepackage{titlesec}
 \\usepackage{lettrine}
+\\usepackage{amsthm}
+\\usepackage{amssymb}
 
 % for placeholder text
 \\usepackage{lipsum}
@@ -69,6 +71,9 @@ function initializeTemplate(title) {
 \\titleformat{\\chapter}[display]
   {\\normalfont\\huge\\bfseries}{}{0pt}{\\Huge}
 \\titlespacing*{\\chapter}{0pt}{-50pt}{40pt}
+
+\\newtheorem*{proposition}{Proposition} % Define theorem environment without numbering
+\\newtheorem*{thoughtexperiment}{Thought Experiment} % Define theorem environment without numbering
 
 \\begin{document}
 \\makeatletter
@@ -102,4 +107,3 @@ function chapterIndentRegex() {
   const chapterTitle = new RegExp(chapterTitleLiteral, "g")
   return chapterTitle
 }
-
