@@ -1,54 +1,50 @@
-const TITLE = 1
-const BODY = 0
-const AUTHOR = "Asad Hasan (Alex)"
-const AUTHOR_TITLE = "Theoretical Computational Scientist"
+const TITLE = 1;
+const BODY = 0;
+const AUTHOR = "Asad Hasan (Alex)";
+const AUTHOR_TITLE = "Theoretical Computational Scientist";
 // Edit these title patterns
-const titlePatterns = [
-  "Preface",
-  "Foreword",
-  "Chapter\\s\\d.+"
-]
+const titlePatterns = ["Preface", "Foreword", "Chapter\\s\\d.+"];
 
-const noIndentChapterPatterns = [
-  "Preface",
-  "Chapter 11.+"
-]
-
-function indentParagraph(paragraphText) {
-    return paragraphText.trim().replace(/^/g, "\n\\indent ").replace(/\n/g, "\n\n\\indent ")
-}
+const noIndentChapterPatterns = ["Preface", "Chapter 12.+"];
 
 function main() {
-  const {chapterTitle, chapterTitleTest} = chapterRegex()
-  let noIndentRegex = chapterIndentRegex()
-  let doc = DocumentApp.getActiveDocument()
-  let text = doc.getBody().getText()
-  let title = doc.getName()
-  let chapterTexts = text.split(chapterTitle)
-  let template = initializeTemplate(title)
-  let previousNoIndent = false
-  let i = 0
-  for(let chapterText of chapterTexts) {
-    if(chapterText) {
-      if(chapterTitleTest.test(chapterText)) {
-        previousNoIndent = false
-        if(noIndentRegex.test(chapterText)) previousNoIndent = true
+  const { chapterTitle, chapterTitleTest } = chapterRegex();
+  let noIndentRegex = chapterIndentRegex();
+  let doc = DocumentApp.getActiveDocument();
+  let text = doc.getBody().getText();
+  let title = doc.getName();
+  let chapterTexts = text.split(chapterTitle);
+  let template = initializeTemplate(title);
+  let previousNoIndent = false;
+  let i = 0;
+  for (let chapterText of chapterTexts) {
+    if (chapterText) {
+      if (chapterTitleTest.test(chapterText)) {
+        previousNoIndent = false;
+        if (noIndentRegex.test(chapterText)) previousNoIndent = true;
         template += `\\chapter*{${chapterText.trim()}}
-`
-      } else if(previousNoIndent) {
+`;
+      } else if (previousNoIndent) {
         template += `${chapterText}
-`
+`;
       } else {
         template += `${indentParagraph(chapterText)}
-`
+`;
       }
     }
   }
-  template += `\\end{document}`
+  template += `\\end{document}`;
   // Create a file in Google Drive
   let folder = DriveApp.getRootFolder(); // Change to the desired folder if needed
   let fileName = `${title}.tex`; // Name of the file
   folder.createFile(fileName, template);
+}
+
+function indentParagraph(paragraphText) {
+  return paragraphText
+    .trim()
+    .replace(/^/g, "\n\\indent ")
+    .replace(/\n/g, "\n\n\\indent ");
 }
 
 function initializeTemplate(title) {
@@ -80,30 +76,30 @@ function initializeTemplate(title) {
 \\renewcommand{\\@date}{} % Remove the definition of \\@date
 \\makeatother
 \\maketitle
-`
-  return template
+`;
+  return template;
 }
 
 function chapterRegex() {
-  let chapterTitleLiteral = ""
-  let chapterTitleTestLiteral = ""
-  for(let p of titlePatterns) {
-    chapterTitleLiteral += `(${p})|`
-    chapterTitleTestLiteral += `(^${p})|`
+  let chapterTitleLiteral = "";
+  let chapterTitleTestLiteral = "";
+  for (let p of titlePatterns) {
+    chapterTitleLiteral += `(${p})|`;
+    chapterTitleTestLiteral += `(^${p})|`;
   }
-  chapterTitleLiteral = chapterTitleLiteral.replace(/\|$/, '')
-  chapterTitleTestLiteral = chapterTitleTestLiteral.replace(/\|$/, '')
-  const chapterTitle = new RegExp(chapterTitleLiteral, "g")
-  const chapterTitleTest = new RegExp(chapterTitleTestLiteral, "g")
-  return {chapterTitle, chapterTitleTest}
+  chapterTitleLiteral = chapterTitleLiteral.replace(/\|$/, "");
+  chapterTitleTestLiteral = chapterTitleTestLiteral.replace(/\|$/, "");
+  const chapterTitle = new RegExp(chapterTitleLiteral, "g");
+  const chapterTitleTest = new RegExp(chapterTitleTestLiteral, "g");
+  return { chapterTitle, chapterTitleTest };
 }
 
 function chapterIndentRegex() {
-  let chapterTitleLiteral = ""
-  for(let p of noIndentChapterPatterns) {
-    chapterTitleLiteral += `(${p})|`
+  let chapterTitleLiteral = "";
+  for (let p of noIndentChapterPatterns) {
+    chapterTitleLiteral += `(${p})|`;
   }
-  chapterTitleLiteral = chapterTitleLiteral.replace(/\|$/, '')
-  const chapterTitle = new RegExp(chapterTitleLiteral, "g")
-  return chapterTitle
+  chapterTitleLiteral = chapterTitleLiteral.replace(/\|$/, "");
+  const chapterTitle = new RegExp(chapterTitleLiteral, "g");
+  return chapterTitle;
 }
